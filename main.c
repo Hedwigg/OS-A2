@@ -1,28 +1,15 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <stdio.h>
 #include <stdlib.h>
 
 
-int main()
-{
-
-  /*Linked List of Nodes*/
-
-
-
-  /*Node object*/
-  struct Node  {
+/*Node object*/
+struct Node  {
 	int data;
 	struct Node* next;
 	struct Node* prev;
 };
+
+struct Node* head; //pointer to head of D-LL
 
 //Creates a new Node and returns pointer to it.
 struct Node* GetNewNode(int x) {
@@ -62,5 +49,12 @@ void Print() {
 
 int main()
 {
-
+    /*Create Buffer */
+    int r;
+    for(int i = 0; i<30; i++)
+    {
+        //random int between 0 and 50 for node value.
+        r = rand() % 50;
+        InsertAtHead(r); Print();
+    }
 }
