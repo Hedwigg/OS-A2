@@ -1,3 +1,11 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,24 +29,25 @@ struct Node* GetNewNode(int x) {
 	return newNode;
 }
 
-//Inserts a Node at head of doubly linked list
-void InsertAtHead(int x) {
+//Inserts a Node at tail of Doubly linked list
+void InsertAtEnd(int x) {
+	struct Node* temp = head;
 	struct Node* newNode = GetNewNode(x);
 	if(head == NULL) {
 		head = newNode;
 		return;
 	}
-	head->prev = newNode;
-	newNode->next = head;
-	head = newNode;
-
-
+	while(temp->next != NULL) temp = temp->next; // Go To last Node
+	temp->next = newNode;
+	newNode->prev = temp;
 }
 
+
+
 //Prints all the elements in linked list in forward traversal order
-void Print() {
+void PrintBuffer() {
 	struct Node* temp = head;
-	printf("Forward: ");
+	printf("Buffer: ");
 	while(temp != NULL) {
 		printf("%d ",temp->data);
 		temp = temp->next;
@@ -49,12 +58,13 @@ void Print() {
 
 int main()
 {
-    /*Create Buffer */
+    /*Create Buffer & initialize with 3 nodes*/
     int r;
-    for(int i = 0; i<30; i++)
+    for(int i = 0; i<3; i++)
     {
         //random int between 0 and 50 for node value.
         r = rand() % 50;
-        InsertAtHead(r); Print();
+        InsertAtEnd(r);
     }
+    PrintBuffer();
 }
